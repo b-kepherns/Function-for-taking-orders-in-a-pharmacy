@@ -5,12 +5,7 @@ class medicineType
 public:
 
 	void take_order(); //take order
-	void delete_order();//delete order
-	void modify();//modify order
-	void order_list();//display order list
-	void daily_summary();//display summary
-	void exit();//exit the menu
-	medicineType();
+	
 };
 medicineType::medicineType()
 {
