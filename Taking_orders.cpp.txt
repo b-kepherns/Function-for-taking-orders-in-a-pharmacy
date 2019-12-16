@@ -1,0 +1,80 @@
+/*Brian Kepherns*/
+
+#include <iostream>
+#include <stdlib.h>
+#include "medicineType.h"
+
+void medicineType::take_order() //function to take order
+{
+	system("cls");
+	int i;
+	int choice, quantity, price, none;
+	std::cout << "\nAdd Order Details\n";
+	std::cout << "---------------------------\n";
+
+	node* temp;
+	temp = new node;
+		
+		
+	std::cout << "************************************************************************************\n";
+	std::cout << "DRUGS ID" << "  \tDRUGS TYPE" << "       \tDRUGS NAME" << "          DRUGS PRICE(RM)";
+	std::cout << "0001"     << "\t" << "\tOTC " << "\t\t"<<" Probiotics" << "			RM 2.00\n";
+	std::cout << "0002" << "\t" << "\tOTC " << "\t\t" << "   Vitamin C(500mg)" << "		RM 3.00\n";
+	std::cout << "0003" << "\t" << "\tOTC" << "\t\t" << "    Acid Free C(500mg)" << "	RM 1.00\n";
+	std::cout << "0004" << "\t" << "\tOTC" << "\t\t" << "    Women'S Multivate" << "	RM 4.00\n";
+	std::cout << "0005" << "\t" << "\tOTC" << "\t\t" << "    Marino Tablet" << "	 	RM 1.00\n";
+	std::cout << "0006" << "\t" << "\tOTC" << "\t\t" << "    Maxi Cal Tablet" << " 		RM 5.00\n";
+	std::cout << "0007" << "\t" << "\tOTC" << "\t\t" << "    Amino Zinc Tablet" << "	RM 7.00\n";
+	std::cout << "0008" << "\t" << "\tOTC" << "\t\t" << "    Burnex" << "			    RM 4.00\n";
+	std::cout << "0009" << "\t" << "\tOTC" << "\t\t" << "    Fabuloss 5" << "			RM 3.00\n";
+	std::cout << "0010" << "\t" << "\tOTC" << "\t\t" << "    Royal Propollen" << "		RM 5.00\n";
+	std::cout << "\n\n";
+
+	temp = new node;
+	std::cout << "Type Order No\n";
+	std::cin >> temp->receipt_number;
+	std::cout << "Enter Customer Name\n";
+	std::cin >> temp->customername;
+	std::cout << "Enter Date\n";
+	std::cin >> temp->date;
+	std::cout << "How many Medicine would you like to order:\n";
+	std::cout << "( Maximum is 10 order for each transaction ) \n";
+	std::cout << "  ";
+	std::cin >> temp->x;
+
+
+	if (temp->x > 10) {
+		std::cout << "The Nedicine Ordered Exceeds Maximum Orders\n";
+		system("pause");
+	}
+
+	else {
+		for (i = 0; i < temp->x; i++) {
+			std::cout << "Please Enter Your Selection\n";
+			std::cin >> temp->menu2[i];
+			std::cout << "Medicine Name" << temp->medicinename[temp->menu2[i] - 1] << "\n";
+			std::cout << "How Many Medicine Do You Want\n";
+			std::cin >> temp->quantity[i];
+
+			temp->amount[i] = temp->quantity[i] * temp->medicine[temp->menu2[i] - 1];
+			std::cout << "The amount you need to pay is" << temp->amount[i] << "RM" << "\n";
+
+			system("PAUSE");
+		}
+
+		std::cout << "===========================================================================" << "\n";
+		std::cout << "Order Taken Successfully" << "\n";
+		std::cout << "===========================================================================" << "\n";
+		std::cout << "Go to Reciept Menu to Pay The Bill" << "\n";
+		std::cout << "===========================================================================" << "\n";
+		system("PAUSE");
+
+		temp->next = NULL;
+		if (start_ptr != NULL) {
+			temp->next = start_ptr;
+
+		}
+		start_ptr = temp;
+		system("cls");
+	}
+}
